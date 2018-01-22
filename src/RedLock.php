@@ -75,8 +75,9 @@ class RedLock
         if (empty($this->instances)) {
             foreach ($this->servers as $server) {
                 //list($host, $port, $database) = $server;
-                $redis = App::make(Redis::class, [$server]);
+                //$redis = App::make(Redis::class, [$server]);
                 //$redis->connect($host, $port, $timeout);
+                $redis = new Redis($server);
                 $this->instances[] = $redis;
             }
         }
